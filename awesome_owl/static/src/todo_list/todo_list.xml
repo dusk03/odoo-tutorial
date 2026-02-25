@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+   <!-- TodoItem Template -->
+   <t t-name="awesome_owl.TodoItem">
+      <div class="d-flex align-items-center border rounded p-2 mb-2 bg-light"
+           t-att-class="props.todo.isCompleted ? 'text-muted text-decoration-line-through' : ''">
+         <input 
+            type="checkbox" 
+            class="me-2"
+            t-att-checked="props.todo.isCompleted"
+            t-on-change="() => props.toggleState(props.todo.id)"/>
+
+           <span class="badge bg-primary me-2"><t t-esc="props.todo.id"/></span>
+         <span><t t-esc="props.todo.description"/></span>
+         <span 
+            class="fa fa-remove text-danger ms-2" 
+            style="cursor: pointer;"
+            t-on-click="() => props.removeTodo(props.todo.id)"/>
+      </div>
+   </t>
+
+   <!-- TodoList Template -->
+   <t t-name="awesome_owl.TodoList">
+      <div class="border rounded p-3" style="max-width: 500px;">
+         <h4 class="mb-3">My Todo List</h4>
+
+         <!-- Input for adding new todos -->
+         <div class="mb-3">
+            <input 
+               type="text" 
+               class="form-control" 
+               placeholder="Enter a new task"
+               t-on-keyup="addTodo"
+               t-ref="inputRef"/>
+         </div>
+
+         <!-- List of todos -->
+         <div>
+            <t t-foreach="todos" t-as="todo" t-key="todo.id">
+               <TodoItem todo="todo" toggleState.bind="toggleTodo" removeTodo.bind="removeTodo"/>
+            </t>
+         </div>
+
+         <!-- Show message when list is empty -->
+         <div t-if="todos.length === 0" class="text-muted text-center py-3">
+            <p>No tasks yet. Add one above!</p>
+         </div>
+      </div>
+   </t>
+   
+</templates>
