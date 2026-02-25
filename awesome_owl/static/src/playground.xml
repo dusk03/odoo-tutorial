@@ -2,6 +2,43 @@
 <templates xml:space="preserve">
    <t t-name="awesome_owl.playground">
       <div class="p-3">
+         <h3 class="mb-3">Generic Cards with Slots</h3>
+         
+         <div class="d-flex flex-wrap">
+            <!-- Card with simple text -->
+            <Card title="'Simple Card'">
+               <p>This is just some plain text content inside a card.</p>
+            </Card>
+
+            <!-- Card with formatted content -->
+            <Card title="'Formatted Card'">
+               <p>This card has <strong>bold</strong> and <em>italic</em> text.</p>
+               <ul>
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+               </ul>
+            </Card>
+
+            <!-- Card with a Counter component -->
+            <Card title="'Card with Counter'">
+               <p>This card contains a counter component:</p>
+               <Counter onChange.bind="incrementSum"/>
+               <p class="mt-2">Total sum: <t t-esc="state.sum"/></p>
+            </Card>
+
+            <!-- Card with markup content -->
+            <Card title="'Card with Markup'">
+               <t t-out="richContent"/>
+            </Card>
+
+            <!-- Card with multiple counters -->
+            <Card title="'Multiple Counters'">
+               <Counter onChange.bind="incrementSum"/>
+               <Counter onChange.bind="incrementSum"/>
+               <p class="mt-2 fw-bold">Combined sum: <t t-esc="state.sum"/></p>
+            </Card>
+         </div>
+
          <h3 class="mt-4">Todo List Component</h3>
          <TodoList/>
       </div>
