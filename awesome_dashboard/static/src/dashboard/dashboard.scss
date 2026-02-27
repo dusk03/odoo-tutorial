@@ -1,0 +1,46 @@
+.o_dashboard {
+    background-color: #f0f0f0;
+    
+    .o_dashboard_content {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .o_dashboard_item {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        
+        &:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-body {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    .o_statistic {
+        text-align: center;
+        padding: 20px;
+        
+        .o_statistic_value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00a09d;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .o_statistic_label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+}

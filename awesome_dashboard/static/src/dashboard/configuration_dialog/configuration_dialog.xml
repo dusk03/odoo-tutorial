@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="awesome_dashboard.ConfigurationDialog">
+        <Dialog title="'Dashboard Configuration'" size="'md'">
+            <div class="o_dashboard_configuration">
+                <p class="text-muted mb-3">
+                    Select which items you want to display on your dashboard:
+                </p>
+                
+                <div class="o_configuration_items">
+                    <t t-foreach="props.allItems" t-as="item" t-key="item.id">
+                        <div class="form-check mb-2">
+                            <input 
+                                type="checkbox" 
+                                class="form-check-input" 
+                                t-att-id="'item_' + item.id"
+                                t-att-checked="state.itemStates[item.id] ? 'checked' : undefined"
+                                t-on-change="() => this.onCheckboxChange(item.id)"
+                            />
+                            <label class="form-check-label" t-att-for="'item_' + item.id">
+                                <t t-esc="item.description"/>
+                            </label>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            
+            <t t-set-slot="footer">
+                <button class="btn btn-secondary" t-on-click="props.close">
+                    Cancel
+                </button>
+                <button class="btn btn-primary" t-on-click="onApply">
+                    Apply
+                </button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

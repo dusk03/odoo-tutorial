@@ -1,0 +1,22 @@
+.o_dashboard_configuration {
+    .o_configuration_items {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
+    
+    .form-check {
+        padding-left: 1.5rem;
+        
+        &:hover {
+            background-color: #e9ecef;
+            border-radius: 4px;
+            padding: 4px;
+            margin-left: -4px;
+            padding-left: 1.5rem + 4px;
+        }
+    }
+}
