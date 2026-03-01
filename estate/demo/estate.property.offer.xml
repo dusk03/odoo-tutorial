@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Azure Interior: Offer 1 on Big Villa -->
+        <record id="property_offer_demo_1" model="estate.property.offer">
+            <field name="property_id" ref="estate.property_demo_1"/>
+            <field name="partner_id" ref="base.res_partner_1"/>
+            <field name="price">10000</field>
+            <field name="validity">14</field>
+        </record>
+
+        <!-- Azure Interior: Offer 2 on Big Villa -->
+        <record id="property_offer_demo_2" model="estate.property.offer">
+            <field name="property_id" ref="estate.property_demo_1"/>
+            <field name="partner_id" ref="base.res_partner_1"/>
+            <field name="price">1500000</field>
+            <field name="validity">14</field>
+        </record>
+
+        <!-- Deco Addict: Offer on Big Villa -->
+        <record id="property_offer_demo_3" model="estate.property.offer">
+            <field name="property_id" ref="estate.property_demo_1"/>
+            <field name="partner_id" ref="base.res_partner_2"/>
+            <field name="price">1500001</field>
+            <field name="validity">14</field>
+        </record>
+
+        <!-- Accept offer 3 (highest price) -->
+        <function model="estate.property.offer" name="action_accept">
+            <value eval="[ref('property_offer_demo_3')]"/>
+        </function>
+
+        <!-- Refuse the other two -->
+        <function model="estate.property.offer" name="action_refuse">
+            <value eval="[ref('property_offer_demo_1'), ref('property_offer_demo_2')]"/>
+        </function>
+    </data>
+</odoo>
