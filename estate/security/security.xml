@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Group Privilege -->
+        <record id="groups_privilege_real_estate" model="res.groups.privilege">
+            <field name="name">Real Estate</field>
+        </record>
+
+        <!-- Agent Group -->
+        <record id="estate_group_user" model="res.groups">
+            <field name="name">Agent</field>
+            <field name="privilege_id" ref="groups_privilege_real_estate"/>
+        </record>
+
+        <!-- Manager Group -->
+        <record id="estate_group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="privilege_id" ref="groups_privilege_real_estate"/>
+            <field name="implied_ids" eval="[(4, ref('estate_group_user'))]"/>
+        </record>
+
+        <!-- Make admin a Real Estate Manager -->
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('estate_group_manager'))]"/>
+        </record>
+
+    </data>
+</odoo>
